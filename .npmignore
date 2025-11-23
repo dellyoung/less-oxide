@@ -1,0 +1,21 @@
+# Rust 构建产物
+target/
+
+# 基准样本与测试资源（发布包无需）
+benches/
+fixtures/
+tests/
+
+# 脚本与文档中间件
+scripts/
+other.md
+AGENTS.md
+src/AGENTS.md
+
+# 开发配置类文件
+Cargo.lock
+.cargo/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

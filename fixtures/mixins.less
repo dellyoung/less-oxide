@@ -1,0 +1,42 @@
+@primary: #0099ff;
+@shadow-color: rgba(0, 0, 0, 0.35);
+
+.mixin-card(@radius: 8px, @padding: 16px) {
+  border-radius: @radius;
+  padding: @padding;
+  box-shadow: 0 8px 24px fade(@shadow-color, 50%);
+}
+
+.mixin-button(@bg, @fg: #fff) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  height: 36px;
+  border-radius: 999px;
+  background: @bg;
+  color: @fg;
+  &:hover {
+    background: lighten(@bg, 12%);
+  }
+}
+
+.dashboard-card {
+  .mixin-card(12px, 24px);
+  background: #fff;
+  .card-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .card-actions {
+    display: flex;
+    gap: 12px;
+    .primary {
+      .mixin-button(@primary);
+    }
+    .muted {
+      .mixin-button(lighten(@primary, 30%), #003355);
+    }
+  }
+}

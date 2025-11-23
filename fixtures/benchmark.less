@@ -1,0 +1,107 @@
+@primary: #336699;
+@secondary: #ff6600;
+@spacing: 12px;
+
+.mixin-rounded(@radius) {
+  border-radius: @radius;
+  box-shadow: 0 2px 6px fade(@primary, 30%);
+}
+
+.button-base() {
+  display: inline-flex;
+  align-items: center;
+  padding: (@spacing * 0.75) (@spacing * 1.5);
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.btn {
+  .button-base();
+  .mixin-rounded(6px);
+  color: #fff;
+  background: @primary;
+  border: 1px solid darken(@primary, 10%);
+
+  &:hover {
+    background: lighten(@primary, 12%);
+  }
+
+  &--secondary {
+    background: @secondary;
+    border-color: darken(@secondary, 5%);
+  }
+}
+
+.card {
+  .mixin-rounded(8px);
+  border: 1px solid fade(@primary, 25%);
+  padding: @spacing * 1.5;
+
+  .card__title {
+    font-size: 18px;
+    margin-bottom: @spacing / 2;
+  }
+
+  .card__actions {
+    margin-top: @spacing;
+    display: flex;
+    gap: @spacing / 2;
+  }
+}
+
+@font-face {
+  font-family: 'Bench Rounded';
+  src: url('/fonts/bench-rounded.woff2') format('woff2');
+  font-display: swap;
+}
+
+@keyframes button-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: @spacing;
+
+  &__sidebar {
+    display: none;
+  }
+
+  @supports (display: grid) {
+    grid-template-columns: repeat(12, 1fr);
+    .layout__sidebar {
+      display: block;
+    }
+  }
+
+  @media (min-width: 900px) {
+    grid-template-columns: 3fr 1fr;
+    .layout__sidebar {
+      display: block;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .card {
+    padding: @spacing;
+
+    .card__actions {
+      flex-direction: column;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+# Rust build artifacts
+target/
+**/*.rs.bk
+less_oxide.node
+fixtures/styles
+
+# Node.js build artifacts
+node_modules/
+dist/
+build/
+coverage/
+.cache/

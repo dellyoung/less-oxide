@@ -1,0 +1,45 @@
+{
+  "name": "less-oxide",
+  "version": "0.1.0",
+  "description": "基于 Rust 的高性能 LESS 编译器，可直接替换 less 包",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "license": "MIT",
+  "keywords": [
+    "less",
+    "css",
+    "compiler",
+    "rust",
+    "napi"
+  ],
+  "scripts": {
+    "init": "npm install && npm run build",
+    "build": "napi build --release --features node",
+    "build:debug": "napi build --features node",
+    "build:fixtures": "node scripts/build-fixtures.js",
+    "test": "node scripts/quick-test.js",
+    "benchmark": "node scripts/benchmark.js",
+    "pub": "npm run build && npm version patch && npm publish && git push origin master",
+    "pub:alpha": "npm run build && npm version prerelease --preid=alpha && npm publish --tag alpha && git push origin master"
+  },
+  "devDependencies": {
+    "@napi-rs/cli": "^2.16.3",
+    "cross-env": "^7.0.3",
+    "less": "^4.2.0"
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "README.md",
+    "less_oxide.node",
+    "index.node"
+  ],
+  "napi": {
+    "name": "less_oxide",
+    "triples": {
+      "default": {
+        "module": "less_oxide.node"
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+@primary: #1f4d7a;
+@radius: 10px;
+
+.panel {
+  border-radius: @radius;
+  padding: 16px;
+  background: lighten(@primary, 35%);
+
+  @media (min-width: 960px) {
+    padding: 32px;
+
+    .panel__title {
+      font-size: 24px;
+    }
+  }
+
+  @supports (backdrop-filter: blur(10px)) {
+    background: fade(@primary, 20%);
+    backdrop-filter: blur(20px);
+  }
+}
+
+@media (max-width: 720px) {
+  .panel {
+    width: 100%;
+  }
+
+  .panel__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+@font-face {
+  font-family: 'Inter Var';
+  src: url('/fonts/inter-var.woff2') format('woff2');
+  font-display: swap;
+}
+
+@keyframes pulse-border {
+  0% {
+    box-shadow: 0 0 0 0 fade(@primary, 45%);
+  }
+  70% {
+    box-shadow: 0 0 0 4px fade(@primary, 0%);
+  }
+  100% {
+    box-shadow: 0 0 0 0 fade(@primary, 0%);
+  }
+}

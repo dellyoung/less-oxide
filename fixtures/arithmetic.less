@@ -1,0 +1,21 @@
+@spacing: 12px;
+@column-width: 64px;
+@columns: 8;
+@columns-minus-one: (@columns - 1);
+@grid-width: (@column-width * @columns);
+@gutter-width: (@spacing * @columns-minus-one);
+
+.grid {
+  margin: -(@spacing / 2);
+  width: @grid-width + @gutter-width;
+  &__item {
+    padding: (@spacing / 2) (@spacing * 1.5);
+    flex: 0 0 (@column-width - @spacing);
+  }
+}
+
+.scale-demo {
+  font-size: (@spacing / 3);
+  line-height: (@spacing / 3) * 1.5;
+  letter-spacing: (@spacing / -24);
+}
